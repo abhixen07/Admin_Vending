@@ -43,11 +43,11 @@ class ManagementScreen extends StatelessWidget {
             onPressed: () {
       Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => fireStoreScreen()),
+      MaterialPageRoute(builder: (context) => FireStoreScreen()),
       );
       },
               style: ElevatedButton.styleFrom(
-                primary: Color(0xffffcc00),
+                backgroundColor: Color(0xffffcc00),
                 //textStyle: TextStyle(fontWeight: FontWeight.bold),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10), // Set to zero for a rectangle
@@ -71,7 +71,7 @@ class ManagementScreen extends StatelessWidget {
                 );
               },
               style: ElevatedButton.styleFrom(
-                primary: Color(0xffffcc00),
+                backgroundColor: Color(0xffffcc00),
                 //textStyle: TextStyle(fontWeight: FontWeight.bold),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10), // Set to zero for a rectangle

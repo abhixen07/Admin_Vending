@@ -67,9 +67,9 @@ class _LoginScreenState extends State<LoginScreen> {
           title: Center(child: const Text('Login')),
           backgroundColor: Color(0xffffcc00), // Set your desired color here
         ),
-        body: Expanded(
+        body: SingleChildScrollView(
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
+            padding: const EdgeInsets.symmetric(horizontal: 20,vertical:70),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,

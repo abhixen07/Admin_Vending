@@ -58,7 +58,8 @@ class _selectMachineForItemsState extends State<selectMachineForItems> {
             stream: fireStore,
             builder: (BuildContext context,AsyncSnapshot<QuerySnapshot> snapshot){
               if(snapshot.connectionState == ConnectionState.waiting)
-                return CircularProgressIndicator();
+                return Center(child: CircularProgressIndicator());
+              //return CircularProgressIndicator();
               if(snapshot.hasError)
                 return Text('Error');
               if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
@@ -76,8 +77,12 @@ class _selectMachineForItemsState extends State<selectMachineForItems> {
                           MaterialPageRoute(builder: (context) => itemListScreen(machineId: machineId)),
                         );
                       },
+
                       title: Text(snapshot.data!.docs[index]['machineName'].toString()),
-                      subtitle: Text('location: ${snapshot.data!.docs[index]['location'].toString()}'),
+                      subtitle: Text('Location Name: ${snapshot.data!.docs[index]['location'].toString()}'),
+                      leading: snapshot.data!.docs[index]['imageUrl'].toString().isNotEmpty // Conditionally display the image if URL is not empty
+                          ? Image.network(snapshot.data!.docs[index]['imageUrl'].toString()) // Display image from network URL
+                          : Placeholder(),
                     );
                   },
                 ),
@@ -89,3 +94,4 @@ class _selectMachineForItemsState extends State<selectMachineForItems> {
     );
   }
 }
+
