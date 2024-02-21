@@ -43,7 +43,7 @@ class ManagementScreen extends StatelessWidget {
             onPressed: () {
       Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => fireStoreScreen()),
+      MaterialPageRoute(builder: (context) => FireStoreScreen()),
       );
       },
               style: ElevatedButton.styleFrom(

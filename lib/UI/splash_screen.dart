@@ -1,32 +1,38 @@
 import 'dart:async';
-
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:kotlin/UI/auth/login_screen.dart';
+import 'package:kotlin/UI/widgets/main_screen.dart';
 import 'package:kotlin/firebase_services/splash_services.dart';
 
+class SplashScreen extends StatefulWidget {
+  const SplashScreen({Key? key}) : super(key: key);
+
+  static void isLogin(BuildContext context) {
+    final auth = FirebaseAuth.instance;
+    final user = auth.currentUser;
+
+    if (user != null) {
+      Timer(const Duration(seconds: 3),
+              () => Navigator.push(context, MaterialPageRoute(builder: (context) => ManagementScreen())));
+    } else {
+      Timer(const Duration(seconds: 3),
+              () => Navigator.push(context, MaterialPageRoute(builder: (context) => LoginScreen())));
+    }
+  }
 
 
 
- class SplashScreen extends StatefulWidget {
-   const SplashScreen({super.key});
-
-
-   @override
-   State<SplashScreen> createState() => _SplashScreenState();
- }
-
+  @override
+  State<SplashScreen> createState() => _SplashScreenState();
+}
 
 class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    Timer(
-      Duration(seconds: 2),
-          () => Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => LoginScreen()),
-      ),
-    );
+    //SplashServices.isLogin(context);
+    SplashScreen.isLogin(context);
   }
 
   @override
@@ -37,17 +43,16 @@ class _SplashScreenState extends State<SplashScreen> {
           gradient: RadialGradient(
             center: Alignment.center,
             radius: 0.8,
-            colors: [Color(0xFFFFFACD), Color(0xffffcc00)],
+            colors: [Color(0xFFFFFACD), Color(0xFFFFCC00)],
           ),
         ),
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              // Your App Logo
               Container(
-                width: 300, // Increased size
-                height: 300, // Increased size
+                width: 300,
+                height: 300,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   color: Colors.transparent,
@@ -61,7 +66,6 @@ class _SplashScreenState extends State<SplashScreen> {
                 ),
               ),
               SizedBox(height: 20),
-              // Animated Loading Indicator
               CircularProgressIndicator(
                 valueColor: AlwaysStoppedAnimation<Color>(Color(0xFFFFCC00)),
               ),
@@ -72,4 +76,3 @@ class _SplashScreenState extends State<SplashScreen> {
     );
   }
 }
- 
