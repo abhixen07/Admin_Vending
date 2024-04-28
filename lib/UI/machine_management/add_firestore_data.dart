@@ -66,7 +66,7 @@ class _AddFirestoreDataScreenState extends State<AddFirestoreDataScreen> {
 
                   return null; // Return null if the validation passes
                 },
-              ),
+              ) ,
 
               const SizedBox(height: 30,),
               TextFormField(
