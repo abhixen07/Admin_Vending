@@ -74,7 +74,7 @@ class _AddFirestoreDataScreenState extends State<AddFirestoreDataScreen> {
                 controller: locationController,
                 decoration: InputDecoration(
                   labelText: 'Location Name',
-                  prefixIcon: Icon(Icons.location_city_rounded),
+                   prefixIcon: Icon(Icons.location_city_rounded),
                   enabledBorder: OutlineInputBorder(
                     borderSide: BorderSide(color: Colors.grey.withOpacity(0.5)),
                     borderRadius: BorderRadius.circular(10.0),
